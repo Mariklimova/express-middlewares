@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllUser, getUserById,createNewUser } = require('../service/user.service')
+const { getAllUser, getUserById,createNewUser,updateDataById,deleteElementById,updateById } = require('../service/user.service')
 const route = express.Router();
 route.get('/', (req, res) => {
     try {
@@ -26,7 +26,7 @@ route.put('/:id', (req, res) => {
     try {
         const { id } = req.params;
         const { name, surname, email, pwd } = req.body;
-        const newData = updateDataById(name, surname, email, pwd)
+        const newData = updateDataById(id,name, surname, email, pwd)
         res.status(200).send(newData);
 
     } catch (error) {
@@ -39,6 +39,28 @@ route.post('/', (req, res) => {
         const { name, surname, email, pwd } = req.body;
         const newUser = createNewUser(name, surname, email, pwd)
         res.status(200).send(newUser);
+
+    } catch (error) {
+        res.status(404).send(error.message);
+    }
+});
+route.delete('/:id', (req, res) => {
+    try {
+        const {id} = req.params;
+        const delUser = deleteElementById(id)
+        res.status(200).send(delUser);
+
+    } catch (error) {
+        res.status(404).send(error.message);
+    }
+});
+
+route.patch('/:id', (req, res) => {
+    try {
+        const {id} = req.params;
+        const body = req.body;
+        const newElement = updateById(id,body)
+        res.status(200).send(newElement);
 
     } catch (error) {
         res.status(404).send(error.message);

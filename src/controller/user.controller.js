@@ -1,6 +1,9 @@
 const express = require('express');
-const { getAllUser, getUserById,createNewUser,updateDataById,deleteElementById,updateById } = require('../service/user.service')
+const { getAllUser, getUserById, createNewUser, updateDataById, deleteElementById, updateById } = require('../service/user.service')
+const { isValidUser,isValidUserId } = require('../helper/validation');
+
 const route = express.Router();
+
 route.get('/', (req, res) => {
     try {
         const data = getAllUser();
@@ -11,7 +14,7 @@ route.get('/', (req, res) => {
     }
 });
 
-route.get('/:id', (req, res) => {
+route.get('/:id',isValidUserId, (req, res) => {
     try {
         const { id } = req.params;
         const dataId = getUserById(id);
@@ -22,11 +25,11 @@ route.get('/:id', (req, res) => {
     }
 });
 
-route.put('/:id', (req, res) => {
+route.put('/:id', isValidUser,isValidUserId, (req, res) => {
     try {
         const { id } = req.params;
         const { name, surname, email, pwd } = req.body;
-        const newData = updateDataById(id,name, surname, email, pwd)
+        const newData = updateDataById(id, name, surname, email, pwd)
         res.status(200).send(newData);
 
     } catch (error) {
@@ -34,7 +37,7 @@ route.put('/:id', (req, res) => {
     }
 });
 
-route.post('/', (req, res) => {
+route.post('/', isValidUser, (req, res) => {
     try {
         const { name, surname, email, pwd } = req.body;
         const newUser = createNewUser(name, surname, email, pwd)
@@ -44,9 +47,9 @@ route.post('/', (req, res) => {
         res.status(404).send(error.message);
     }
 });
-route.delete('/:id', (req, res) => {
+route.delete('/:id',isValidUserId, (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const delUser = deleteElementById(id)
         res.status(200).send(delUser);
 
@@ -55,11 +58,11 @@ route.delete('/:id', (req, res) => {
     }
 });
 
-route.patch('/:id', (req, res) => {
+route.patch('/:id',isValidUserId, (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const body = req.body;
-        const newElement = updateById(id,body)
+        const newElement = updateById(id, body)
         res.status(200).send(newElement);
 
     } catch (error) {

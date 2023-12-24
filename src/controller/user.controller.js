@@ -70,4 +70,4 @@ route.patch('/:id',isValidUserId, (req, res) => {
     }
 });
 
-module.exports = { route };
+module.exports = route

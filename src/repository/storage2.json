@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Maria",
+        "surname": "Grant",
+        "location": "Los Angeles",
+        "age": 22,
+        "phone": "+375291111111"
+    },
+    {
+        "id": 2,
+        "name": "Martha",
+        "surname": "Mausoleum",
+        "location": "Baer-Sheba",
+        "age": 21,
+        "phone": "+375291111122"
+    },
+    {
+        "id": 3,
+        "name": "Konstantin",
+        "surname": "Konstantinov",
+        "location": "Moscow",
+        "age": 20,
+        "phone": "+375291231361"
+    },
+    {
+        "id": 4,
+        "name": "Kirill",
+        "surname": "Anisimov",
+        "location": "Minsk",
+        "age": 21,
+        "phone": "+375291181111"
+    },
+    {
+        "id": 5,
+        "name": "Yana",
+        "surname": "Zolotova",
+        "location": "St. Petersburg",
+        "age": 22,
+        "phone": "+375291149011"
+    },
+    {
+        "id": 6,
+        "name": "Bronislav",
+        "surname": "Wojciechowski",
+        "location": "Warsaw",
+        "age": 23,
+        "phone": "+375292283791"
+    },
+    {
+        "id": 7,
+        "name": "Fedor",
+        "surname": "Poljakov",
+        "location": "Minsk",
+        "age": 20,
+        "phone": "+37529256983"
+    }
+]

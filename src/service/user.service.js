@@ -60,7 +60,7 @@ function deleteElementById(id) {
     return deleteElement
 }
 
-function updateById(id,body) {
+function updateById(id, body) {
     const jsonString = fs.readFileSync('./src/repository/storage.json');
     const arr = JSON.parse(jsonString);
     const index = arr.findIndex((item) => item.id == id);
